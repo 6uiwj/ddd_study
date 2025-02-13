@@ -7,10 +7,12 @@ package org.example.ddd;
  * SHIPPED : 출고완료 -> 배송정보 변경 불가
  * DELIVERING : 배송중 -> 배송정보 변경 불가
  * DELIVERY_COMPLETED : 배송완료 -> 배송정보 변경 불가
+ * CANCELED : 취소됨
  */
 public enum OrderState {
     PAYMENT_WAITING,
     PREPARING,
-    SHIPPED, DELIVERING, DELIVERY_COMPLETED;
+    SHIPPED, DELIVERING, DELIVERY_COMPLETED,
+    CANCELED;
 
 }

@@ -12,6 +12,7 @@ public class Order {
      * 주문항목 클래스에서 주문항복을 가져와 List에 주입
      * @param orderLines
      * @param shippingInfo : 주문할 때 배송지 정보 반드시 지정
+     * 도메인 규칙 : 배송 정보는 필수
      */
     public Order(List<OrderLine> orderLines, ShippingInfo shippingInfo) {
         setOrderLines(orderLines);
@@ -19,7 +20,7 @@ public class Order {
     }
 
     /**
-     * 도메인 규칙 : 배송 정보는 필수
+     * 생성자
      * @param shippingInfo
      */
     public void setShippingInfo(ShippingInfo shippingInfo) {
@@ -61,14 +62,29 @@ public class Order {
 
     /**
      * 배송정보 변경
-     *
+     * 주문이 출고 이전 상태면 배송정보 변경 진행, 아니면 예외발생(verifyNotYetShipped()에서)
      * @param newShippingInfo 새로운 배송정보
      */
     public void changeShippingInfo(ShippingInfo newShippingInfo) {
-        if (!isShippingChangeable()) { //배송정보 변경가능?
-            throw new IllegalStateException("can't change shipping in " + state);
-        }
-        this.shippingInfo = newShippingInfo;
+        verifyNotYetShipped();
+        setShippingInfo(newShippingInfo);
+    }
+
+    /**
+     * 주문 취소
+     * 주문이 취소되면, 주문 상태를 취소로 바꾼다.
+     */
+    public void cancel() {
+        verifyNotYetShipped();
+        this.state = OrderState.CANCELED;
+    }
+
+    /**
+     * 주문상태가 결제 대기가 아니고, 준비중이 아니라면 아직 출고 전인 상태이다.
+     */
+    private void verifyNotYetShipped() {
+        if(state != OrderState.PAYMENT_WAITING && state != OrderState.PREPARING)
+            throw new IllegalStateException("aleady shipped");
     }
 
     /**
@@ -86,7 +102,6 @@ public class Order {
     }
 
     public void ChangeShipped() {}
-    public void cancel() {}
     public void completePayment(){}
 
 }
