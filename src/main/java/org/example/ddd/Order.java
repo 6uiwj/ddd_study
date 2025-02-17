@@ -8,6 +8,8 @@ public class Order {
     private List<OrderLine> orderLines; //주문항목 리스트 가져오기
     private Money totalAmounts;
 
+    private String orderNumber;
+
     /**
      * 주문항목 클래스에서 주문항복을 가져와 List에 주입
      * @param orderLines
@@ -104,5 +106,25 @@ public class Order {
     public void ChangeShipped() {}
     public void completePayment(){}
 
+    /**
+     * 엔티티를 구현한 클래스에서 식별자를 이용하여 equals와 hashCode() 메서드 구현하기
+     * @param obj
+     * @return
+     */
+//    @Override
+//    public boolean equals(Object obj) {
+//        if(this == obj) return true;
+//        if(obj == null) return false;
+//        if(obj.getClass() != Order.class) return false;
+//        return this.orderNumber.equals(other.orerNumber);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        final int prime = 31;
+//        int result = 1;
+//        result = prime * result + ((orderNumber == null) ? 0 : orderNumber.hashCode());
+//        return result;
+//    }
 }
 
