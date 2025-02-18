@@ -1,6 +1,7 @@
 <h1>도메인 모델 </h1>
 
-![ddd drawio (1)](https://github.com/user-attachments/assets/cb276593-48e4-4d10-a236-9328e6900406)
+<img src="https://github.com/user-attachments/assets/fb3e25e7-fcc1-4b92-94dc-a436a2cd8850
+">
 
 
 <h1> 요구사항 </h1>
