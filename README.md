@@ -1,7 +1,7 @@
 <h1>도메인 모델 </h1>
 
-<img src="https://github.com/user-attachments/assets/fb3e25e7-fcc1-4b92-94dc-a436a2cd8850
-">
+![ddd drawio (1)](https://github.com/user-attachments/assets/20a44aa8-a1e6-472a-af8a-7354c2936d20)
+
 
 
 <h1> 요구사항 </h1>
@@ -57,8 +57,7 @@ orderRepository.save(order);
 
 <h1>밸류</h1>
 - 밸류: 하나의 개념을 타나태는 필드들의 집합 <br/>
-![2025-02-18 17 13 23](https://github.com/user-attachments/assets/b51e1506-c657-4436-a05e-f6da69f9240b)
-
+<img src="https://github-production-user-asset-6210df.s3.amazonaws.com/148047079/414156435-b51e1506-c657-4436-a05e-f6da69f9240b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250218%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250218T082744Z&X-Amz-Expires=300&X-Amz-Signature=d0f82cf73f121babc1a7841199ae14fab93802b4dd2d7a0fe929e6dcd520fef8&X-Amz-SignedHeaders=host">
 
 - 꼭 두개 이상의 데이터를 가져야 하는 것은 아님, 의미를 명확하게 하기 위해 밸류 타입을 사용하는 경우도 있음
 OrderLine에서 price와 amounts는 int타입이지만 정확히는 '돈'을 나타내므로, '돈'을 의미하는 Money 타입으로 밸류를 만들 수 있음
