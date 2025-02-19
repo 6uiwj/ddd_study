@@ -1,8 +1,12 @@
 package org.example.ddd;
 
 import java.util.List;
+import java.util.UUID;
 
 public class Order {
+
+    //UUID uuid = UUID.randomUUID(); //식별자 생성하기
+    //String strUuid = uuid.toString();
     private OrderState state; //주문상태
     private ShippingInfo shippingInfo; //배송정보
     private List<OrderLine> orderLines; //주문항목 리스트 가져오기
