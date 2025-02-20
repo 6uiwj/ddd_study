@@ -1,6 +1,7 @@
 package org.example.ddd;
 //OrerLine의 amounts와 price가 의미하는 '돈'=Money타입을 정의하는 밸류
 //price와 amounts가 금액을 의미하는 것을 나타내기 위해
+//불변 객체
 public class Money {
     private int value;
 

@@ -1,12 +1,21 @@
 package org.example.ddd;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import java.util.List;
 import java.util.UUID;
+
 
 public class Order {
 
     //UUID uuid = UUID.randomUUID(); //식별자 생성하기
     //String strUuid = uuid.toString();
+
+    private OrderNo id;
+
+    public OrderNo getId() {
+        return id;
+    }
     private OrderState state; //주문상태
     private ShippingInfo shippingInfo; //배송정보
     private List<OrderLine> orderLines; //주문항목 리스트 가져오기
@@ -24,6 +33,18 @@ public class Order {
         setOrderLines(orderLines);
         setShippingInfo(shippingInfo);
     }
+
+    public Order(Orderer orderer, List<OrderLine> orderLines, ShippingInfo shippingInfo,
+                 OrderState state) {
+        setOrderer(orderer);
+        setOrderLines(orderLines);
+    }
+
+    public void setOrderer(Orderer orderer) {
+        if(orderer == null) throw new IllegalArgumentException("no orderer");
+        this.orderer = orderer;
+    }
+
 
     /**
      * 생성자
@@ -60,10 +81,8 @@ public class Order {
      * 총 구매 가격
      */
     private void calculateTotalAmounts() {
-        int sum = orderLines.stream() //주문 항목
-                .mapToInt(x -> x.getAmounts()) //주문 항복에서 총 구매가격을 가져옴
-                .sum(); //전부 합함
-        this.totalAmounts = new Money(sum);
+        //코드 확인 필요
+        this.totalAmounts = new Money(orderLines.stream().mapToInt(x -> x.getAmounts()).sum());
     }
 
     /**
@@ -130,5 +149,6 @@ public class Order {
 //        result = prime * result + ((orderNumber == null) ? 0 : orderNumber.hashCode());
 //        return result;
 //    }
+
 }
 

@@ -16,4 +16,17 @@ public class Receiver {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
+    /**
+     * 두 객체가 같은지 비교 (모든 속성 비교)
+     * @param other
+     * @return
+     */
+    public boolean equals(Object other) {
+        if(other == null) return false;
+        if(this == other) return true;
+        if(!(other instanceof Receiver)) return false;
+        Receiver that = (Receiver)other;
+        return this.name.equals(that.name) && this.phoneNumber.equals(that.phoneNumber);
+    }
 }
