@@ -14,14 +14,16 @@
 <li>출고를 하면 배송지를 변경할 수 없다.</li>
 <li>출고 전에 주문을 취소할 수 있다.</li>
 <li>고객이 결제를 완료하기 전에는 상품을 준비하지 않는다. </li>
-
-
+<br/>
+<br/>
 <h1>엔티티</h1>
 <h3>엔티티</h3>
 
 - 식별자를 가짐(=기본키)
 - 엔티티는 객체마다 고유해서 각 엔티티는 서로 다른 식별자를 갖는다
 
+<br/>
+<br/>
 <h3>식별자 생성규칙</h3>
 
 - 특정 규칙에 따라 생성
@@ -54,7 +56,8 @@ Order order = new Order(orderNumber, ...);
 orderRepository.save(order);
 ```
 
-
+<br/>
+<br/>
 <h1>밸류</h1>
 - 밸류: 하나의 개념을 타나태는 필드들의 집합 <br/>
 <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/148047079/414156435-b51e1506-c657-4436-a05e-f6da69f9240b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250218%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250218T082744Z&X-Amz-Expires=300&X-Amz-Signature=d0f82cf73f121babc1a7841199ae14fab93802b4dd2d7a0fe929e6dcd520fef8&X-Amz-SignedHeaders=host">
@@ -91,4 +94,41 @@ public class Money {
 
 ```
 
-- 밸류 객체의 데이터를 변경할 때에는 기존 데이터를 변경하기보다 새 객체를 생성  (불변 객체(코드의 안정성을 위해)) 
+- 밸류 객체의 데이터를 변경할 때에는 기존 데이터를 변경하기보다 새 객체를 생성  (불변 객체(코드의 안정성을 위해))
+
+<br/>
+<br/>
+
+<h1>네 개의 영역</h1>
+<li> 표현 영역 </li>
+<li> 응옹 영역 </li>
+<li> 도메인 영역</li>
+<li> 인프라스트럭처 영역</li>
+
+<br/>
+<h2>표현 영역</h2>
+<li> 사용자의 요청을 받아 해석해서 응용 영역에 전달 (ex: 웹 브라우저가 HTTP 요청 파라미터로 전송한 데이터를 응용 서비스가 요구하는 형식의 객체 타입으로 변환해서 전달) </li>
+<li> 응용 영역의 처리 결과를 다시 사용자에게 보여주는 역할 (ex: 응용 서비스가 리턴한 결과를 JSON 형식으로 변환해서 HTTP 응답으로 웹 브라우저에 전송)  </li>
+<li> 스프링 MVC 프레임워크가 표현 영역을 위한 기술임 </li>
+
+![ddd-4개의영역 drawio](https://github.com/user-attachments/assets/5ff16f72-5896-4046-afd1-87b59fdbb531)
+
+<h2>응용 영역</h2>
+<li>시스템이 사용자에게 제공해야 할 기능 구현 (ex: 주문 등록, 주문 취소, 상품 상세 조회)</li>
+<li>기능 구현을 위해 도메인 영역의 도메인 모델을 사용, 실제 도메인 로직 구현은 도메인 모델에 위임</li>
+
+![ddd-응용영역 drawio](https://github.com/user-attachments/assets/86734b93-91ca-4f90-95bd-ad47eb029f62)
+
+<br/>
+<h2>도메인 영역</h2>
+<li>도메인 모델 구현</li>
+<li>도메인의 핵심 로직 구현 (ex: 주문 도메인 - 배송지 변경, 결제완료, 주문 총액 계산)</li>
+
+
+<br/>
+<h2>인프라스트럭처 영역</h2>
+<li>구현 기술에 대한 것</li>
+<li>RDBMS 연동을 처리, 메시징 큐에 메시지를 전송하거나 수신하는 기능 구현</li>
+<li>SMTP를 이용한 메일 발송 기능을 구현하거나 HTTP 클라이언트를 이용해서 REST API를 호출하는 것도 처리</li>
+<li>논리적인 개념을 표현하기보다 실제 구현을 다룸</li>
+<li>도메인 영역, 응용 영역, 표현 영역은 구현 기술을 사용한 코드를 직접 만들지 않고, 인프라스트럭처 영역에서 제공하는 기능을 사용해서 필요한 기능을 개발 </li>
