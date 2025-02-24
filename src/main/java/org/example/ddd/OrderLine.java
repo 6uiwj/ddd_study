@@ -2,6 +2,7 @@ package org.example.ddd;
 
 /**
  * 주문 항목
+ * 도메인 영역
  */
 public class OrderLine {
     private Product product; //제품

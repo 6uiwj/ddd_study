@@ -9,6 +9,8 @@ package org.example.ddd;
  * DELIVERY_COMPLETED : 배송완료 -> 배송정보 변경 불가
  * CANCELED : 취소됨
  */
+
+//상태는 최대한 도메인 용어를 사용해 코드 해석이 쉽도록 해준다.
 public enum OrderState {
     PAYMENT_WAITING,
     PREPARING,

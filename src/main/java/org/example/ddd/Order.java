@@ -1,11 +1,10 @@
 package org.example.ddd;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 import java.util.List;
-import java.util.UUID;
 
-
+/**
+ * 도메인 영역
+ */
 public class Order {
 
     //UUID uuid = UUID.randomUUID(); //식별자 생성하기

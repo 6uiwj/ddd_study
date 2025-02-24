@@ -1,5 +1,8 @@
 package org.example.ddd;
 
+/**
+ * 도메인 영역
+ */
 public class ShippingInfo {
    private Receiver receiver;
    private Address address;
